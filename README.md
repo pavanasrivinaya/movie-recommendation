@@ -20,14 +20,8 @@ npm run dev
 
 5. The server will listen on port 3000 (you can change this in app.js if needed).
 Make a Request:
-Open your web browser or use a tool like curl or Postman.
-
-Make a GET request to the following URL (replace <genre> and <time> with your desired values):
-
-http://localhost:3000/recommendations?genre=<genre>&time=<time>
-
-For example:
-http://localhost:3000/recommendations?genre=animation&time=12:00
+Open your web browser : http://localhost:3000
+For example:(Test cases) genre=animation&time=12:00
 
 View Recommendations:
-You’ll receive a JSON respponse with movie recommendations based on the specified genre and time.
+You’ll receive a  respponse with movie recommendations based on the specified genre and time.
