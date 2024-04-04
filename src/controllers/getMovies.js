@@ -20,7 +20,10 @@ const filterMovies = async (genre, targetTime) => {
         return parsedTime;
       });
 
-      const targetDateTimeIST = moment(targetTime).utcOffset("+11:00", true); // Parse target time and set timezone offset
+      const targetDateTimeIST = moment(targetTime, "HH:mm").utcOffset(
+        "+11:00",
+        true
+      ); // Parse target time and set timezone offset
 
       const afterThreshold = showtimesIST.some((showtime) =>
         showtime.isAfter(targetDateTimeIST.clone().add(30, "minutes"))
@@ -33,9 +36,11 @@ const filterMovies = async (genre, targetTime) => {
       );
     });
 
+    // console.log("Filtered movies:", filteredMovies); // Log filtered movies
+
     return filteredMovies;
   } catch (error) {
-    console.error("Error fetching movies:", error);
+    // console.error("Error fetching movies:", error);
     throw new Error("Error fetching movie recommendations");
   }
 };
@@ -49,9 +54,7 @@ const recommendationsController = async (req, res) => {
   }
 
   try {
-    const isoTime = moment(time, "HH:mm").toISOString();
-
-    const recommendations = await filterMovies(genre, isoTime);
+    const recommendations = await filterMovies(genre, time);
 
     if (recommendations.length > 0) {
       const responseString = recommendations
