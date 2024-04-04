@@ -49,20 +49,19 @@ const recommendationsController = async (req, res) => {
   }
 
   try {
-    // Convert time parameter to ISO 8601 format
     const isoTime = moment(time, "HH:mm").toISOString();
 
     const recommendations = await filterMovies(genre, isoTime);
 
     if (recommendations.length > 0) {
-      // Construct the response string with movie names and showtimes
       const responseString = recommendations
-        .map(
-          (movie) =>
-            `${movie.name}, showing at ${moment(movie.showings[0], "HH:mm:ssZ")
-              .utcOffset("+11:00", true)
-              .format("h:mma")}`
-        )
+        .map((movie) => {
+          // Use moment without considering timezone offset
+          const showingTime = moment(movie.showings[0], "HH:mm:ss").format(
+            "h:mma"
+          );
+          return `${movie.name}, showing at ${showingTime}`;
+        })
         .join("\n");
       res.send(responseString);
     } else {
