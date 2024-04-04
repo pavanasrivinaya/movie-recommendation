@@ -57,6 +57,9 @@ const recommendationsController = async (req, res) => {
     const recommendations = await filterMovies(genre, time);
 
     if (recommendations.length > 0) {
+      // Sort recommendations by rating
+      recommendations.sort((a, b) => b.rating - a.rating);
+
       const responseString = recommendations
         .map((movie) => {
           // Use moment without considering timezone offset
