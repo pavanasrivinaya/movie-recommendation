@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendations</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Get Movie Recommendations</h1>
+        <form id="movieForm">
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" required>
+            
+            <label for="time">Time (HH:MM):</label>
+            <input type="text" id="time" name="time" pattern="(?:[01]\d|2[0123]):(?:[012345]\d)" title="Enter a valid time in HH:MM format" required>
+            
+            <button type="submit">Get Recommendations</button>
+        </form>
+
+        <div id="recommendations"></div>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
