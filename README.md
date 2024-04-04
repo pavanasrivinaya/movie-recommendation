@@ -7,7 +7,7 @@ git clone <repository_url>
 
 2. Navigate to the Project Directory:
    Change your working directory to the cloned repository folder:
-cd movie-recommendations-app
+cd movie-recommendation
 
 3. Install Dependencies:
    Make sure you have Node.js and npm (Node Package Manager) installed.
